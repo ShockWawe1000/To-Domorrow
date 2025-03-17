@@ -1,0 +1,586 @@
+/*
+
+
+*{
+    border: 1px solid red;
+}
+*/
+
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins,sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+
+.iconSvg{
+    width: 25px;
+}
+
+.button.headerButton, .headerTitle{
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    margin-left: 2px;
+    width: 32;
+    height: 32;
+
+}
+
+.headerTitle{
+    font-weight: 600;
+    font-size:16px
+}
+
+
+/* SIDEBAR CONTENT */
+
+#sidebar{
+  
+    min-width: 230px;
+    padding: 20px;
+    background: rgb(23, 23, 23);
+    color: rgb(180, 180, 180);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    display: flex;
+    gap:50px;
+    flex-direction: column;
+    z-index: 2;
+
+}
+.docked{
+    display: none;
+}
+
+#sidebarIcon2{
+   width:fit-content;
+}
+
+.sidebar-group-title{
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.sidebarButtonGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button.sidebarButton{
+width: 100%;
+padding: 10px 10px;
+display: flex;
+justify-content:baseline;
+color: rgb(180, 180, 180);
+
+}
+
+.button.sidebarButton:hover{
+    background-color: rgb(33, 33, 33);
+    cursor: pointer;
+}
+
+.button.sidebarButton.selected{
+    background-color: rgb(33, 33, 33);
+    cursor:default;
+}
+
+.sidebarButton p{
+font-size: 12px;
+font-weight: 600;
+}
+
+.taskCount{
+    margin-left: auto;
+}
+
+.sidebarImg{
+margin-right: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.sidebarImg img
+{
+    width: 20px;
+}
+
+
+
+/* MAIN CONTENT */
+body{
+    
+    display: flex;
+   
+}
+
+#smokeScreen{
+background-color: rgba(0, 0, 0, 0.678);
+position: fixed;
+left: 0;
+top: 0;
+width: 100%; 
+height: 100%; 
+overflow: auto;
+z-index: 1;
+}
+
+#main{
+    padding: 20px;
+    background: rgb(33, 33, 33);
+    color: rgb(180, 180, 180);
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+    align-items: top;
+    margin-left: 270px;
+    min-height:calc(100vh - 40px);
+    height: fit-content;
+
+   
+}
+
+header{
+    width: 100%;
+}
+
+#titlePage{
+    margin: 50px;
+    font-size: 20px;
+}
+
+.statusCards{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+    max-width: 300px;
+    margin-bottom: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.statusCard{
+   width: 100%;
+   height: 90px;
+   background:rgb(47, 47, 47) ;
+   border-radius: 8px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   color: rgb(236, 236, 236);
+}
+
+.ammountCard {
+  
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+
+.textCard {
+    font-size: 15px;
+}
+
+
+#addTaskButton{
+    margin-top: 15px;
+    margin-bottom: 150px;
+}
+
+button.addTaskButton{
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(236, 236, 236);
+    width: 170px;
+    height: 38px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 2px solid rgb(47, 47, 47);
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    border: 0px;
+    margin-left: 2px;
+    border-radius: 8px;
+    padding: 0px;
+    line-height: 0px;
+}
+
+button:hover , #addTaskButton:hover ,.button.headerButton:hover{
+
+    background-color: rgb(47, 47, 47);
+}
+
+#taskContainer{
+ 
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    gap:10px;
+    transition: height 1.3s ease-in-out; 
+    max-height: 100%;
+}
+
+.taskCard{
+    background:rgb(47, 47, 47) ;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+ 
+ 
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width:100%;
+
+}
+.dueDate{
+    margin-left: auto;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+   -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right:15px ;
+  }
+
+.container input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+   
+}
+
+input{
+    color-scheme: dark;
+}
+
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #eeeeee00;
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 50%;
+}
+
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #52f321;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+
+
+  .container .cbx {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+  }
+  .container .cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+  .container .cbx span:first-child {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #B9B8C3;
+    transition: all 0.2s ease;
+  }
+  .container .cbx span:first-child svg {
+    position: absolute;
+    z-index: 1;
+    top: 8px;
+    left: 6px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+  .container .cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #506EEC;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+    transition-delay: 0.2s;
+  }
+  .container .cbx span:last-child {
+    margin-left: 8px;
+  }
+  .container .cbx span:last-child:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background: #B9B8C3;
+    transform-origin: 0 0;
+    transform: scaleX(0);
+  }
+  .container .cbx:hover span:first-child {
+    border-color: #3c53c7;
+  }
+
+  .container .checkbox:checked + .cbx span:first-child {
+    border-color: #3c53c7;
+    background: #3c53c7;
+    animation: check-15 0.6s ease;
+  }
+  .container .checkbox:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+  .container .checkbox:checked + .cbx span:first-child:before {
+    transform: scale(2.2);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+  .container .checkbox:checked + .cbx span:last-child {
+    color: #B9B8C3;
+    transition: all 0.3s ease;
+  }
+  .container .checkbox:checked + .cbx span:last-child:after {
+    transform: scaleX(1);
+    transition: all 0.3s ease;
+  }
+
+  @keyframes check-15 {
+    50% {
+      transform: scale(1.2);
+    }
+  }
+
+
+
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#sidebar.hidden , .hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.headerButton.hiddenBtn{
+    display: none;
+}
+
+#main.fullscreen{
+    margin:0;
+}
+
+
+
+/* add task MODAL CONTENT */
+.modal {
+    position: fixed; 
+    z-index: 4; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+  
+  }
+
+  #modalSmokeScreen
+  {
+    position: fixed; 
+    z-index: 4; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+ 
+.modal-content {
+    position: relative;
+    z-index: 99; 
+    background-color: rgb(33, 33, 33);
+    margin: 20vh auto 0 ; 
+    padding: 50px 30px;
+    border-radius: 12px;
+    width: 270px; 
+    color: rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content input, textarea{
+    background-color: rgba(0,0,0,0);
+    border: 0px;
+    width: 100%;
+    color: rgb(180, 180, 180);
+}
+
+.modal-content input:focus, textarea:focus , select:focus {
+    outline: none;
+}
+
+.modal-content input{
+    font-size: 18px;
+    margin: 22px 0px ;
+    
+}
+textarea{
+    height: 100px;
+    resize: none;
+ 
+}
+
+.modalOptionsContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#flagImg .iconSvg, #calendarImg .iconSvg , #projectModalImg .iconSvg {
+width: 20px;
+margin-right: 10px;
+}
+
+#dueDateSelect, #projectsSelect, #prioritySelect{
+text-align: end;
+margin-left: auto;
+}
+
+select{
+    background-color: rgba(0, 0, 0, 0);
+    color : rgb(180, 180, 180);
+    border: rgba(0, 0, 0, 0);
+}
+
+option {
+    position: absolute;
+    color : rgb(180, 180, 180);
+    background-color: rgb(47, 47, 47);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+
+#dueDateSelect{
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    text-align: end;
+}
+#addTaskModalButton{
+    margin-top: 40px;
+}
+/*Scrollbar*/
+
+::-webkit-scrollbar{
+	width: 10px;
+}
+
+::-webkit-scrollbar-track-piece{
+	background-color: #1d1d1d;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #383838;
+	outline: 2px solid #383838;
+	outline-offset: -2px;
+	border: .1px solid #B7B7B7;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background-color: #909090;
+}
+@media (max-width: 780px) {
+    #main{
+        margin: 0px;
+    }
+  }

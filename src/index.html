@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+
+<modal id="addTaskModal" class="modal hidden">
+    <div id="modalSmokeScreen"></div>
+        
+
+            <form id="addTaskForm" class="modal-content" method = "post">
+                <h2>Add Task</h2>
+
+                <input type="text"  name="title" placeholder="Title" id="taskTitle" required>
+                <textarea type="text" name="desc"  placeholder="Description" id="taskDescription" ></textarea>
+
+                <!-- Priority -->
+                <div class="modalOptionsContainer">
+                    <div id="flagImg"></div>
+                    
+                    <label for="prioritySelect">Priority</label>
+                    <select  name="Priority" name="prioritySelect" id="prioritySelect">     
+                        <option class="selectItems" value="Low Priority">Low Priority</option>
+                        <option class="selectItems" value="Medium Priority">Medium Priority</option>
+                        <option class="selectItems" value="High Priority">High Priority</option>
+                    </select>
+
+                </div>
+
+
+    
+                <!-- Due Date -->
+                <div class="modalOptionsContainer">
+                    <div id="calendarImg"></div>
+                    <label for="start"><nobr>Due Date</nobr></label>
+                    <input  name="Date" type="date" id="dueDateSelect" 
+                    />
+                </div>
+
+
+            
+                <!-- Project  -->
+                <div class="modalOptionsContainer">
+                    <div id="projectModalImg"></div>
+                    <label for="projectsSelect">Project</label>
+                    <select name="projectsSelect" id="projectsSelect">     
+                        <option value="Default">Default</option>
+                        <option value="aa aaa">aa aaa</option>
+
+                    </select>
+                </div>
+
+
+                <button type="submit" id="addTaskModalButton" class="button addTaskButton">Add Task</button>
+        </form>
+     
+
+</modal>
+
+
+
+
+<div id="sidebar" >
+    <button type="button" class="headerButton button"  id="sidebarIcon2"></button>
+
+    <div>
+        <p class="sidebar-group-title">Tasks</p>
+            <div class="sidebarButtonGroup">
+           
+                <button type="button" id="Today" class="button sidebarButton selected"> <div class="sidebarImg" id="TodayImg" ></div> <p>Today</p> <div id="TodayCount" class="taskCount">0</div> </button>
+                <button type="button" id="Tomorrow" class="button sidebarButton"> <div class="sidebarImg" id="tommorowImg"></div> <p>Tommorow</p>  <div id="TomorrowCount" class="taskCount">0</div> </button>
+                <button type="button" id="Week" class="button sidebarButton"> <div class="sidebarImg" id="WeekImg"></div> <p>This Week</p>  <div id="WeekCount" class="taskCount">0</div> </button>
+                <button type="button" id="Planned" class="button sidebarButton"> <div class="sidebarImg" id="PlannedImg"></div> <p>Planned</p>  <div id="PlannedCount" class="taskCount">0</div> </button>
+                <button type="button" id="Completed" class="button sidebarButton"> <div class="sidebarImg" id="CompletedImg"></div> <p>Completed</p>  <div id="CompletedCount" class="taskCount">0</div> </button>
+            </div>
+    </div>
+
+    <div>
+            <p class="sidebar-group-title">Projects</p>
+            <div class="sidebarButtonGroup">
+           
+                <button type="button" class="button sidebarButton "> <div class="sidebarImg projectImg"  ></div> <p>Default</p> <div class="taskCount">0</div> </button>
+                <button type="button" class="button sidebarButton"> <div class="sidebarImg projectImg"></div> <p>Tommorow</p>  <div class="taskCount">0</div> </button>
+                <button type="button" class="button sidebarButton"> <div class="sidebarImg projectImg"></div> <p>This Week</p>  <div class="taskCount">0</div> </button>
+                <button type="button" class="button sidebarButton"> <div class="sidebarImg " id="addImg"></div> <p>Add Project</p> </button>
+            </div>
+       
+    </div>
+
+</div>
+
+<div id="main">
+    <div class="hidden" id="smokeScreen"></div>
+    <header>
+        <nav>
+
+            <button type="button" class="headerButton button hiddenBtn" id="sidebarIcon"></button>
+            <div class="headerButton button" id="icon"></div>
+            <h1 class="headerTitle">ToDommorow</h1>
+
+        </nav>
+    </header>
+
+    
+        <h1 id="titlePage">Today</h1>
+
+        <section class="statusCards">
+            <div class="statusCard">
+                <p id="PendingCount" class="ammountCard">2</p>
+                <p class="textCard">Pending</p>
+            </div>
+
+            <div class="statusCard">
+                <p id="CompletedCount" class="ammountCard"> 4</p>
+                <p class="textCard">Completed</p>
+            </div>
+        </section>
+
+
+
+           <div id="taskContainer">
+
+
+                <div class="taskCard">
+                    
+                    <div class="container">
+                        <input class="checkbox" id="cbx-15" type="checkbox" style="display: none;"/>
+                        <label class="cbx" for="cbx-15">
+                          <span>
+                            <svg width="12px" height="9px" viewbox="0 0 12 9">
+                              <polyline points="1 5 4 8 11 1"></polyline>
+                            </svg>
+                          </span>
+                          <span class="taskTitle">Your JavaScript is Disabled</span>
+                        </label>
+                      </div>
+
+                    <div class="dueDate">Tue,29 Jan</div>
+
+                </div>
+
+
+
+     
+
+
+
+           </div>
+                    
+            
+      
+<div>
+    <button type="button" id="addTaskButton" class="button addTaskButton">+ Add Task</button>
+</div>
+       
+ 
+</div>
+
+</body>
+</html>
