@@ -3,8 +3,8 @@ import { checkFilterDate } from "./checkDate";
 
 const titlePage = document.getElementById("titlePage")
 
-const PendingCount = document.getElementById("PendingCount")
-const CompletedCount = document.getElementById("CompletedCount")
+const PendingCount = document.getElementById("PendingCountPage")
+const CompletedCount = document.getElementById("CompletedCountPage")
 
 
 
@@ -14,18 +14,42 @@ const WeekCountElement  = document.getElementById("WeekCount")
 const PlannedCountElement  = document.getElementById("PlannedCount")
 const CompletedCountElement  = document.getElementById("CompletedCount")
 
+export function statsPage(formatedTasks){
+    var PendingCountNum = 0;
+    var CompletedCountNum = 0;
+    formatedTasks.forEach(task =>  
+    {
+        if(task.Completed)
+        {
+            CompletedCountNum++;
+        }
+        else
+        {
+            PendingCountNum++;
+        }
+            
+    }
+    
+    )
+    console.log("pending ")
+    console.log(PendingCountNum)
+    console.log("Completed ")
+    console.log(CompletedCountNum)
+    PendingCount.innerHTML=PendingCountNum;
+    
+    CompletedCount.innerHTML=CompletedCountNum;
+}
 
-
-export function stats(){
+export function statsSidebar(){
     const counts = {
-        completed: 0,
         today: 0,
         tomorrow: 0,
         week: 0,
-        planned: 0
+        planned: 0,
+        completed: 0
     };
 
-    console.log(titlePage)
+
     if(currentFilter=="Week") 
         titlePage.innerHTML = "This Week";
     else
@@ -34,12 +58,16 @@ export function stats(){
     
    tasks.forEach(task => 
     {
-        if (task.completed) counts.completed++;
-        if (!task.completed) counts.planned++;
+        console.log(task.Completed)
+        if (task.Completed) counts.completed++;
+        else{
+            if (!task.Completed) counts.planned++;
         
-        if (checkFilterDate(task.date, "Today")) counts.today++;
-        if (checkFilterDate(task.date, "Tomorrow")) counts.tomorrow++;
-        if (checkFilterDate(task.date, "Week")) counts.week++;
+            if (checkFilterDate(task.date, "Today")) counts.today++;
+            if (checkFilterDate(task.date, "Tomorrow")) counts.tomorrow++;
+            if (checkFilterDate(task.date, "Week")) counts.week++;
+        }
+     
     })
 
 

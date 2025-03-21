@@ -103,36 +103,55 @@ function checkFilterDate(date, filterDate) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   stats: () => (/* binding */ stats)
+/* harmony export */   statsPage: () => (/* binding */ statsPage),
+/* harmony export */   statsSidebar: () => (/* binding */ statsSidebar)
 /* harmony export */ });
 /* harmony import */ var _taskManager__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taskManager */ "./src/js/taskManager.js");
 /* harmony import */ var _checkDate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./checkDate */ "./src/js/checkDate.js");
 
 
 const titlePage = document.getElementById("titlePage");
-const PendingCount = document.getElementById("PendingCount");
-const CompletedCount = document.getElementById("CompletedCount");
+const PendingCount = document.getElementById("PendingCountPage");
+const CompletedCount = document.getElementById("CompletedCountPage");
 const TodayCountElement = document.getElementById("TodayCount");
 const TomorrowCountElement = document.getElementById("TomorrowCount");
 const WeekCountElement = document.getElementById("WeekCount");
 const PlannedCountElement = document.getElementById("PlannedCount");
 const CompletedCountElement = document.getElementById("CompletedCount");
-function stats() {
+function statsPage(formatedTasks) {
+  var PendingCountNum = 0;
+  var CompletedCountNum = 0;
+  formatedTasks.forEach(task => {
+    if (task.Completed) {
+      CompletedCountNum++;
+    } else {
+      PendingCountNum++;
+    }
+  });
+  console.log("pending ");
+  console.log(PendingCountNum);
+  console.log("Completed ");
+  console.log(CompletedCountNum);
+  PendingCount.innerHTML = PendingCountNum;
+  CompletedCount.innerHTML = CompletedCountNum;
+}
+function statsSidebar() {
   const counts = {
-    completed: 0,
     today: 0,
     tomorrow: 0,
     week: 0,
-    planned: 0
+    planned: 0,
+    completed: 0
   };
-  console.log(titlePage);
   if (_taskManager__WEBPACK_IMPORTED_MODULE_0__.currentFilter == "Week") titlePage.innerHTML = "This Week";else titlePage.innerHTML = _taskManager__WEBPACK_IMPORTED_MODULE_0__.currentFilter;
   _taskManager__WEBPACK_IMPORTED_MODULE_0__.tasks.forEach(task => {
-    if (task.completed) counts.completed++;
-    if (!task.completed) counts.planned++;
-    if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Today")) counts.today++;
-    if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Tomorrow")) counts.tomorrow++;
-    if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Week")) counts.week++;
+    console.log(task.Completed);
+    if (task.Completed) counts.completed++;else {
+      if (!task.Completed) counts.planned++;
+      if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Today")) counts.today++;
+      if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Tomorrow")) counts.tomorrow++;
+      if ((0,_checkDate__WEBPACK_IMPORTED_MODULE_1__.checkFilterDate)(task.date, "Week")) counts.week++;
+    }
   });
   TodayCountElement.innerHTML = counts.today;
   TomorrowCountElement.innerHTML = counts.tomorrow;
@@ -470,9 +489,11 @@ function clearTasks() {
 }
 function renderAllTasks(filterTask) {
   clearTasks();
-  (0,_currentPage__WEBPACK_IMPORTED_MODULE_2__.stats)();
+  (0,_currentPage__WEBPACK_IMPORTED_MODULE_2__.statsSidebar)();
   var formatedTasks = (0,_filter__WEBPACK_IMPORTED_MODULE_1__.formatTasks)(tasks, filterTask);
+  console.log(filterTask);
   formatedTasks.forEach(task => renderTask(task));
+  (0,_currentPage__WEBPACK_IMPORTED_MODULE_2__.statsPage)(formatedTasks);
 }
 function buttonSelectedClass(button) {
   // Get all elements with the 'selected' class
@@ -487,10 +508,10 @@ function buttonSelectedClass(button) {
   button.classList.add("selected");
 }
 function render() {
-  tasks.push(new Task("do", "date", "2025-03-17", "high", "Default"));
-  tasks.push(new Task("do", "date", "2025-03-18", "high", "Default"));
+  tasks.push(new Task("do", "date", "2025-03-21", "high", "Default"));
+  tasks.push(new Task("do", "date", "2025-03-22", "high", "Default"));
   tasks.push(new Task("do", "date", "2025-03-20", "high", "Default"));
-  tasks.push(new Task("do", "date", "2025-03-20", "high", "Default"));
+  tasks.push(new Task("do", "date", "2025-03-21", "high", "Default"));
   renderAllTasks();
   TodayBtn.addEventListener("click", function () {
     currentFilter = "Today";

@@ -1,7 +1,7 @@
 
 import { getRelativeDate } from "./relativeDate";
 import { formatTasks } from "./filter";
-import { stats } from "./currentPage"
+import { statsSidebar, statsPage } from "./currentPage"
 
 const taskContainer  = document.getElementById("taskContainer")
 
@@ -117,10 +117,11 @@ function clearTasks(){
 function renderAllTasks(filterTask){
 
     clearTasks()
-    stats();
+    statsSidebar();
     var formatedTasks = formatTasks(tasks,filterTask)
-  
+   console.log(filterTask)
     formatedTasks.forEach(task =>  renderTask(task)  )
+    statsPage(formatedTasks);
 }
 
 
@@ -142,10 +143,10 @@ function buttonSelectedClass(button) {
 
 
 export function render(){
-    tasks.push(new Task ("do", "date","2025-03-17","high","Default"))
-    tasks.push(new Task ("do", "date","2025-03-18","high","Default"))
+    tasks.push(new Task ("do", "date","2025-03-21","high","Default"))
+    tasks.push(new Task ("do", "date","2025-03-22","high","Default"))
     tasks.push(new Task ("do", "date","2025-03-20","high","Default"))
-    tasks.push(new Task ("do", "date","2025-03-20","high","Default"))
+    tasks.push(new Task ("do", "date","2025-03-21","high","Default"))
 
 
     renderAllTasks()
